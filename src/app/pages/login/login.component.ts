@@ -1,3 +1,4 @@
+
 import { Component, inject } from '@angular/core';
 import { AccesoService } from '../../services/acceso.service';
 import { Router } from '@angular/router';
@@ -15,10 +16,9 @@ import {MatButtonModule} from '@angular/material/button';
   standalone: true,
   imports: [MatCardModule,MatFormFieldModule,MatInputModule,MatButtonModule,ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   private accesoService = inject(AccesoService);
   private router = inject(Router);
   public formBuil = inject(FormBuilder);
@@ -27,7 +27,7 @@ export class LoginComponent {
   public formLogin: FormGroup = this.formBuil.group({
     correo:['',Validators.required],
     clave:['',Validators.required]
-  })
+  });
 
   //Metodo para Iniciar Sesion
   iniciarSesion(){
@@ -42,21 +42,24 @@ export class LoginComponent {
     this.accesoService.login(objeto).subscribe({
       next:(data) =>{
         if(data.isSuccess){
-          localStorage.setItem("token",data.token)
+          localStorage.setItem("token", data.token)
           this.router.navigate(['inicio']) //"inicio" debe ser igual a lo mapeado en approutes.ts
         }else{
           alert("Las Credenciales son Incorrectas.")
         }
       },
       //Esto por si tira error
-      error:(error) =>{
-        console.log(error.message);
+      error: (error) => {
+        console.error('Error en la solicitud de login:', error); // Mejor manejo de errores
+        alert("Error al intentar iniciar sesión.");
       }
-    })
+    });
   }
 
   //Metodo para Registro
   registrarse(){
-    this.router.navigate(['registro']) //Redirige a registro
+    this.router.navigate(['registro']); //Redirige a registro
   }
 }
+
+

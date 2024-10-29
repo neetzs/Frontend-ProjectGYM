@@ -25,3 +25,4 @@ export class AccesoService {
     return this.http.post<ResponseAcceso>(`${this.baseUrl}Acceso/Login`, objeto)
   }
 }
+
