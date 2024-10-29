@@ -19,7 +19,6 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class LoginComponent {
 
-  //
   private accesoService = inject(AccesoService);
   private router = inject(Router);
   public formBuil = inject(FormBuilder);
@@ -33,6 +32,7 @@ export class LoginComponent {
   //Metodo para Iniciar Sesion
   iniciarSesion(){
     if(this.formLogin.invalid)return;
+    
     const objeto:Login = {
       correo: this.formLogin.value.correo,
       clave: this.formLogin.value.clave

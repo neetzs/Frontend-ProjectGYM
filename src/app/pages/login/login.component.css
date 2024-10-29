@@ -1,9 +1,7 @@
 .card-container {
     display: flex;
     justify-content: center;/*Centrar Horizontalmente*/
-
     align-items: center; /*Centrar Verticalmente*/
-
     margin-top: 100px;
 }
 

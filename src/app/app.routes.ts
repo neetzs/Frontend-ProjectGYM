@@ -4,7 +4,8 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 
 export const routes: Routes = [
-    {path:"", component:LoginComponent},
-    {path:"registro", component:RegistroComponent},
-    {path:"inicio", component:InicioComponent},
+    {path:'', component:LoginComponent},
+    {path:'registro', component:RegistroComponent},
+    {path:'inicio', component:InicioComponent},
+    {path: '**', redirectTo: ''} //Redirecciona a Login si la ruta no existe
 ];
