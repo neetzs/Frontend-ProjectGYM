@@ -24,5 +24,11 @@ export class AccesoService {
   login(objeto:Login):Observable<ResponseAcceso>{
     return this.http.post<ResponseAcceso>(`${this.baseUrl}Acceso/Login`, objeto)
   }
+
+  
+  //Validacion del Token
+    validarToken(token:string):Observable<ResponseAcceso>{
+    return this.http.get<ResponseAcceso>(`${this.baseUrl}Acceso/ValidarToken?token=${token}`)
+  }
 }
 
